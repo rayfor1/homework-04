@@ -1,5 +1,5 @@
 body {
-    /* margin: 0; */
+    margin: 0;
     background: grey;
 }
 
@@ -7,11 +7,11 @@ body {
     /* display: flex; */
     justify-content: center;
     align-items: center;
-    width: 40vw;
+    width: 60vw;
     height: 70vh;
     position: absolute;
     top: 15%;
-    left: 30%;
+    left: 20%;
     padding: 20px;
     border: 5px solid black;
     background: rgba(255, 255, 255, 0.74);
@@ -27,7 +27,7 @@ body {
 }
 
 .question{
-    width: 500px;
+    width: 380px;
     display: flex;
     padding: 20px;
     text-align: center;
@@ -38,8 +38,8 @@ body {
 }
 
 .answer{
-    width: 500px;
-    display: inline-block;
+    width: 400px;
+    display: flex;
     padding: 15px 0 15px 20px;
     vertical-align: middle;
     font-size: 25px;

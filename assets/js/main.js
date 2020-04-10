@@ -1,7 +1,7 @@
 //Initial variables to be used at start of game:
 var currentQuestion = 0;
 var score = 0;
-var totalQuestions = question.length;
+var totalQuestions = questions.length;
 
 //Initial variables to be pulled from/pushed through HTML:
 var quizEl = document.getElementById("quiz");
@@ -13,9 +13,11 @@ var option4 = document.getElementById("option4");
 var nextButton = document.getElementById("nextButton");
 var resultEl = document.getElementById("result");
 
+nextButton.addEventListener('click', renderNextQuestion)
+
 //to load the first Question:
 function renderQuestion(questionIndex){
-    var q = question[questionIndex];
+    var q = questions[questionIndex];
     questionEl.textContent = (questionIndex + 1) + ". " + q.question;
     option1.textContent = q.option1;
     option2.textContent = q.option2;
@@ -30,21 +32,21 @@ function renderNextQuestion(){
     if(!selectedOption){
         alert("Please select an answer!");
         return;
-    }
+    };
 
     //If the user's answers is correct (user answer is the same as the correct answer stored in question.js):
     var userAnswer = selectedOption.value;
-    if(question[currentQuestion].answer === userAnswer){
+    if(questions[currentQuestion].answer === userAnswer){
         score += 10;
     }
     else{
         currentQuestion++;
-    }
+    };
 
     //When user reaches the final question...
     if(currentQuestion === totalQuestions - 1){
         nextButton.textContent = "Finished!";
-    }
+    };
 
     //When the quiz is completed
     if(currentQuestion === totalQuestions){
@@ -52,9 +54,9 @@ function renderNextQuestion(){
         resultEl.style.display = " ";
         resultEl.textContent = "Your final score is " + score;
         return
-    }
+    };
 
     renderQuestion(currentQuestion);
-}
+};
 
 renderQuestion(currentQuestion);
