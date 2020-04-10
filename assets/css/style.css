@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    background: grey;
+}
+
+.quiz{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.question{
+    width: 500px;        
+}
+
+.questions_answers{
+     width: 500px;
+     display: flex;
+     margin: 20px 0;
+}
+
+.label{
+    padding: 20px;
+    margin: 10px 0;
+    background: #F3F3F3;
+}
+    
+.correct{
+    padding: 20px;
+    margin: 10px 0;
+    background: rgb(87, 238, 87);
+}
+
+.incorrect{
+    padding: 20px;
+    margin: 10px 0;
+    background: red;
+}
+
+.questions_actions{
+    width: 500px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+

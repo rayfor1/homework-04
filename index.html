@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Quiz</title>
+    <link rel="stylesheet/css" href="assets/css/style.css">
+</head>
+<body>
+   <div id="quiz" class="container"> 
+       <div id="start" class="title">Coding Quiz</div>
+       <div id="question" class="question"></div>
+
+       <label class="answer"><input type = "radio" name="answer" value="1"/><span id="option1"></span></label>
+
+       <label class="answer"><input type = "radio" name="answer" value="2"/><span id="option2"></span></label>
+
+       <label class="answer"><input type = "radio" name="answer" value="3"/><span id="option3"></span></label>
+
+       <label class="answer"><input type = "radio" name="answer" value="4"/><span id="option4"></span></label>
+
+       <button id="button" class="next-btn" onclick = "nextQuestion();">Next</button>
+
+       <div id="result" class="final-result" style="display:none;">
+
+       </div>
+   </div>
+
+
+
+
+
+
+    
+    <script src="assets/js/main.js" ></script>
+    <script src="assets/js/questions.js"></script>
+
+</body>
+</html>
