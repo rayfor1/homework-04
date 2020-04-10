@@ -1,7 +1,7 @@
 //Initial variables to be used at start of game:
 var currentQuestion = 0;
 var score = 0;
-var totalQuestions = questions.length;
+var totalQuestions = question.length;
 
 //Initial variables to be pulled from/pushed through HTML:
 var quizEl = document.getElementById("quiz");
@@ -55,5 +55,6 @@ function renderNextQuestion(){
     }
 
     renderQuestion(currentQuestion);
-
 }
+
+renderQuestion(currentQuestion);
