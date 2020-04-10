@@ -1,48 +1,86 @@
 body {
-    margin: 0;
+    /* margin: 0; */
     background: grey;
 }
 
-.quiz{
-    display: flex;
+.container{
+    /* display: flex; */
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    width: 40vw;
+    height: 60vh;
+    position: absolute;
+    top: 15%;
+    left: 30%;
+    padding: 20px;
+    border: 5px solid black;
+    background: rgba(255, 255, 255, 0.74);
+    outline: 10px;
+}
+
+.title{
+    padding-top: 20px;
+    text-align: center;
+    font-size: 40px;
+    text-transform: uppercase;
+    color: black
 }
 
 .question{
-    width: 500px;        
-}
-
-.questions_answers{
-     width: 500px;
-     display: flex;
-     margin: 20px 0;
-}
-
-.label{
-    padding: 20px;
-    margin: 10px 0;
-    background: #F3F3F3;
-}
-    
-.correct{
-    padding: 20px;
-    margin: 10px 0;
-    background: rgb(87, 238, 87);
-}
-
-.incorrect{
-    padding: 20px;
-    margin: 10px 0;
-    background: red;
-}
-
-.questions_actions{
     width: 500px;
     display: flex;
-    justify-content: flex-end;
+    padding: 20px;
+    text-align: center;
+    font-size: 25px;
+    background: grey;
+    margin: 10px 10px;
+    color: black
 }
 
+.answer{
+    width: 500px;
+    display: inline-block;
+    padding: 15px 0 15px 20px;
+    vertical-align: middle;
+    font-size: 25px;
+    background: grey;
+    margin: 10px 10px 10px 10px;
+    color: black
+}
+
+
+.answer:hover{
+    background: grey;
+    color: white;
+}
+
+.next-btn{
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.74);
+    width: 120px;
+    height: 40px;
+    border-radius: 15px;
+    cursor: pointer;
+    float: right;
+    margin: 10px;
+
+}
+
+.next-btn:hover{
+    background: grey;
+    color: white;
+}
+
+.final-result{
+    height: 120px;
+    text-align: center;
+    font-size: 100px;
+
+}
+
+.answer input:checked .answer{
+    background: grey;
+    color: white;
+}
 
