@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <!-- countdown info  -->
     <h1 id="timer">Quiz Timer:</h1>
     <div id="main"></div>
 
+    <!-- main questions go here -->
    <div id="quiz" class="container"> 
        <div id="start" class="title">Coding Quiz</div>
        <div id="question" class="question"></div>
@@ -29,10 +31,19 @@
        </div>
    </div>
 
+   <!-- for the high score local storage -->
+   <div class="container" style="display:none">
+        <div id="end" class="flex-center flex-column">
+            <h1 id="finalScore"></h1>
+      <form>
+        <input type="text" name="username" id="username" placeholder="username"/>
 
+        <button type="submit" class="btn" id="saveScoreBtn" onclick="saveHighScore(event)" disabled>
+          Save
+        </button>
 
-
-
+      </form>
+  </div>
 
     
    <script src="assets/js/question.js"></script> 

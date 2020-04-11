@@ -15,6 +15,10 @@ var option3 = document.getElementById("option3");
 var option4 = document.getElementById("option4");
 var nextButton = document.getElementById("nextButton");
 var resultEl = document.getElementById("result");
+var username = document.getElementById("username");
+var saveScoreBtn = document.getElementById("saveScoreBtn");
+var finalScore = document.getElementById("finalScore");
+var mostRecentScore = localStorage.getItem("mostRecentScore");
 
 nextButton.addEventListener('click', renderNextQuestion)
 
@@ -78,20 +82,65 @@ function renderNextQuestion(){
 renderQuestion(currentQuestion);
 
 //countdown timer:
-var secondsLeft = 10;
+var total_seconds = 60;
+var countdown_minutes = parseInt(total_seconds/60);
+var countdown_seconds = parseInt(total_seconds%60);
 
-function setTime (){
-    var countdownTimer = setInterval(
+function setTime(){
+    document.getElementById("main").innerHTML= "Time Left: " + countdown_minutes + " minutes " + countdown_seconds + " seconds ";
+
+    if (total_seconds <= 0){
+        setTimeout();
+    }
+
+    else {
+        total_seconds = total_seconds - 1;
+        countdown_minutes = parseInt(total_seconds/60);
+        countdown_seconds = parseInt(total_seconds%60);
+        setTimeout("setTime()", 1000);
+    }
+setTimeout("setTime()", 1000)
+}
+
+// function setTime (){
+//     var countdownTimer = setInterval(
         
-        function(){
-        secondsLeft--;
-        timerEl.textContent = secondsLeft + " seconds left.";
+//         function(){
+//         secondsLeft--;
+//         timerEl.textContent = secondsLeft + " seconds left.";
 
 
-        if(secondsLeft === 0){
-            clearInterval(countdownTimer);
-            
-        }
+//         if(secondsLeft === 0){
+//             clearInterval(countdownTimer);
 
-    }, 1000);
+//         }
+
+//     }, 1000);
+// };
+
+//to store user score info to local storage
+var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+var numOfHighScores = 5;
+
+finalScore.innerText = mostRecentScore;
+
+username.addEventListener("keyup", () => {
+  saveScoreBtn.disabled = !username.value;
+});
+
+saveHighScore = event => {
+  console.log("clicked the save button!");
+  event.preventDefault();
+
+  const score = {
+    score: Math.floor(Math.random() * 100),
+    name: username.value
+  };
+  highScores.push(score);
+
+  localStorage.setItem("highScores", JSON.stringify(highScores));
+  window.location.assign("/");
 };
+
+
