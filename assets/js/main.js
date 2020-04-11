@@ -1,9 +1,12 @@
 //Initial variables to be used at start of game:
 var currentQuestion = 0;
 var score = 0;
+var highScore = 0;
 var totalQuestions = questions.length;
 
 //Initial variables to be pulled from/pushed through HTML:
+var timerEl = document.getElementById("timer");
+var mainEl = document.getElementById("main");
 var quizEl = document.getElementById("quiz");
 var questionEl = document.getElementById("question");
 var option1 = document.getElementById("option1");
@@ -15,7 +18,8 @@ var resultEl = document.getElementById("result");
 
 nextButton.addEventListener('click', renderNextQuestion)
 
-//to load the first Question:
+
+//to load the first question:
 function renderQuestion(questionIndex){
     var q = questions[questionIndex];
     questionEl.textContent = (questionIndex + 1) + ". " + q.question;
@@ -36,10 +40,17 @@ function renderNextQuestion(){
 
     //If the user's answers is correct (user answer is the same as the correct answer stored in question.js):
     var userAnswer = selectedOption.value;
-    if(questions[currentQuestion].answer === userAnswer){
+    console.log(questions[currentQuestion].correct)
+    console.log(userAnswer)
+    if(questions[currentQuestion].correct === userAnswer){
+        alert("correct answer!")
         score += 10;
+        console.log(score);
+        currentQuestion++;
+
     }
     else{
+        alert("this answer is incorrect. The correct answer is: " + questions[currentQuestion].correct + ".");
         currentQuestion++;
     };
 
@@ -49,10 +60,15 @@ function renderNextQuestion(){
     };
 
     //When the quiz is completed
+    var displayScore;
+
     if(currentQuestion === totalQuestions){
-        container.style.display = "none";
-        resultEl.style.display = " ";
-        resultEl.textContent = "Your final score is " + score;
+        quizEl.style.display = "none";
+        resultEl.style.display = "block";
+        displayScore = document.createElement("h1");
+        displayScore.textContent = "Your final score is " + score;
+        resultEl.append(displayScore);
+        alert("Your final score is: " + score + " out of 100!"); //stil have to figure out how to display the final score on the screen. This is a stopgap
         return
     };
 
@@ -60,3 +76,22 @@ function renderNextQuestion(){
 };
 
 renderQuestion(currentQuestion);
+
+//countdown timer:
+var secondsLeft = 10;
+
+function setTime (){
+    var countdownTimer = setInterval(
+        
+        function(){
+        secondsLeft--;
+        timerEl.textContent = secondsLeft + " seconds left.";
+
+
+        if(secondsLeft === 0){
+            clearInterval(countdownTimer);
+            
+        }
+
+    }, 1000);
+};
