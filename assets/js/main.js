@@ -56,12 +56,31 @@ function renderNextQuestion(){
     else{
         alert("this answer is incorrect. The correct answer is: " + questions[currentQuestion].correct + ".");
         currentQuestion++;
+        total_seconds = total_seconds - 5;
+        console.log("total seconds at line 60: " + total_seconds);
+
+    };
+
+    function showScore(){
+        document.getElementById("quiz", "style=display:none");
+        document.getElementById("result", "style=display");
     };
 
     //When user reaches the final question...
-    if(currentQuestion === totalQuestions - 1){
+    if(currentQuestion >= totalQuestions - 1){
         nextButton.textContent = "Finished!";
-    };
+        nextButton.addEventListener('click', showScore()) //write a function that will change the style of id=question to display:none, copy this just before line 72
+    }
+    else if(total_seconds <=  0){
+        currentQuestion === totalQuestions
+        nextButton.textContent = "Finished!";
+        //copy line 67 here
+        displayScore = document.getElementById("displayScore").innerHTML="Your final score is: " + score;//copy this and paste after the else in line 67
+        alert("Time's up!!)");
+            }
+
+    // };
+
 
     //When the quiz is completed
     var displayScore;
@@ -69,7 +88,7 @@ function renderNextQuestion(){
     if(currentQuestion === totalQuestions){
         quizEl.style.display = "none";
         resultEl.style.display = "block";
-        displayScore = document.createElement("h1");
+        displayScore = document.getElementById("displayScore").innerHTML="Your final score is: " + score;
         displayScore.textContent = "Your final score is " + score;
         resultEl.append(displayScore);
         alert("Your final score is: " + score + " out of 100!"); //stil have to figure out how to display the final score on the screen. This is a stopgap
@@ -82,7 +101,7 @@ function renderNextQuestion(){
 renderQuestion(currentQuestion);
 
 //countdown timer:
-var total_seconds = 60;
+var total_seconds = 10;
 var countdown_minutes = parseInt(total_seconds/60);
 var countdown_seconds = parseInt(total_seconds%60);
 
@@ -90,7 +109,7 @@ function setTime(){
     document.getElementById("main").innerHTML= "Time Left: " + countdown_minutes + " minutes " + countdown_seconds + " seconds ";
 
     if (total_seconds <= 0){
-        setTimeout();
+        setTimeout("setTime()", 0);
     }
 
     else {
@@ -99,8 +118,8 @@ function setTime(){
         countdown_seconds = parseInt(total_seconds%60);
         setTimeout("setTime()", 1000);
     }
-setTimeout("setTime()", 1000)
 }
+setTimeout("setTime()", 1000);
 
 // function setTime (){
 //     var countdownTimer = setInterval(
